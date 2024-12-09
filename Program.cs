@@ -1,63 +1,56 @@
 ﻿using System;
 
-namespace attributes
+namespace AnimalSounds
 {
-    public class person
+    public abstract class Animal
     {
-        private string _name;
-        private int _age;
-        private string _address;
-
-
-        public person (string name, int age, string address)
+        public abstract void MakeSound();
+    }
+    public class Dog : Animal
+    {
+        public override void MakeSound()
         {
-            this._name = name;
-            this._age = age;
-            this._address = address;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Dog: Worffff! Worfffff1");
+            Console.ResetColor();
         }
 
-        public string Name
+    }
+    public class Cat : Animal
+    {
+
+        public override void MakeSound()
         {
-            get { return _name; }
-            set { _name = value; }
-
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Cat: Meowwwwwww! Meowwwwwww!");
+            Console.ResetColor();
         }
-
-        public string Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
-
-        public int Age
-        {
-            get { return _age; }
-            set
-            {
-                if (value >=0)
-                    _age = value;
-                else 
-                    throw new ArgumentException("Age connot be negative");
-            }
-                
-
-         
-        }
-
-        public static void Main(string[] args)
-        {
-            person person = new person("Jericho Dumangas", 26, "Itogon, Benguet");
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine(person.Name);
-            Console.WriteLine(person.Age);
-            Console.WriteLine(person.Address);
-          
-           
-        }
-        
-              
     }
 
+    public class Jearon : Animal
+    {
+        public override void MakeSound()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Jearon: Oinkkkkk!, Oinkkkk!");
+            Console.ResetColor();
+        }
+    }
 
+    public class program
+    {
+        public static void Main(string[] args)
+        {
+            Animal myDog = new Dog();
+            Animal myCat = new Cat();
+            Animal myJea = new Jearon();
+            myDog.MakeSound();
+            myCat.MakeSound();
+            myJea.MakeSound();
+
+
+
+        }
+
+    }
 }
-
